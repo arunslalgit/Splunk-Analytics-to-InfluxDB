@@ -5,7 +5,7 @@
 source "/vector/bin/config/shellConfig.conf"
 export HTTP_PROXY HTTPS_PROXY SPLUNK_HOST SPLUNK_API_ENDPOINT AUTH_TOKEN INFLUX_API SplunkQuery opMode
 Duration="-5m"
-FinalQuery=$opMode$Duration$ratingOverallQuery
+FinalQuery=$opMode$Duration$SplunkQuery
 #echo $FinalQuery
 #This is highly configurable, check Splunk documentation
 response=$(curl --max-time 300 -s -X POST -H "Authorization: Bearer $AUTH_TOKEN" -k $SPLUNK_HOST$SPLUNK_API_ENDPOINT -d $FinalQuery)
